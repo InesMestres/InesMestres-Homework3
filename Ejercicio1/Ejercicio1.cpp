@@ -1,7 +1,6 @@
 #include "Ejercicio1.hpp"
 
 
-
 //FUNCIONES CLASE ABSTRACTA MEDICIONBASE
 
 MedicionBase::MedicionBase(): tiempoMedicion(std::make_unique<float>(0)){}
@@ -42,20 +41,51 @@ void Presion::imprimir() const override{
     cout << "Presión Estática: " << presionEstatica << ", Presión Dinámica: " << presionDinamica << ", Tiempo de Medición: " << getTiempo() << endl;
 }
 
+//FUNCIONES POSICION
+
+Posicion::Posicion(): latitud(0), longitud(0), altitud(0), MedicionBase(0){}
+
+Posicion::Posicion(float lat, float lon, float alt, float t): latitud(lat), longitud(lon), altitud(alt), MedicionBase(t){}
+
+void Posicion::serializar(ofstream& out) const{
+    out.write(reinterpret_cast<const char*>(&latitud), sizeof(float));
+    out.write(reinterpret_cast<const char*>(&longitud), sizeof(float));
+    out.write(reinterpret_cast<const char*>(&altitud), sizeof(float));
+    out.write(reinterpret_cast<const char*>(&tiempoMedicion.get()), sizeof(float));
+}
+
+void Posicion::deserializar(ifstream& in) override{
+    in.read(reinterpret_cast<const char*>(&latitud), sizeof(float));
+    in.read(reinterpret_cast<const char*>(&longitud), sizeof(float));
+    in.read(reinterpret_cast<const char*>(&altitud), sizeof(float));
+    float tiempo;
+    in.read(reinterpret_cast<const char*>(&tiempo), sizeof(float));
+    tiempoMedicion = make_unique<float>(tiempo);
+}
+
+void Posicion::imprimir() const override{
+    cout << "Latitúd: " << latitud << ", Longitud: " << longitud << ", Altitud: " << altitud << ", Tiempo de Medición: " << getTiempo() << endl;
+}
+
+
 
 
 //FUNCIONES Clase SaveFlightData
    
-SaveFlightData(p: const Posicion&, q: const Presion&);
+SaveFlightData(const Posicion& p, const Presion& q): posicion(p), presion(q);
 
-void saveFlightData::serializar(out: ofstream&){
-    out.write(reinterpret_cast<const char*>())
+void saveFlightData::serializar(ofstream& out) const {
+    posicion.serializar(out);
+    presion.serializar(out);
 }
 
-void saveFlightData::deserializar(in: ofstream&){
-
+void saveFlightData::deserializar(ofstream& in){
+    posicion.deserializar(in);
+    presion.deserializar(in);
 }
 
 void saveFlightData::imprimir(){
-    cout << "Los datos del vuelo son: Posición: " << posicion << " . Presión: " << presion << ". El tiempo de estas mediciones es: " << tiempo << endl;
+    cout << "Los datos del vuelo son:" << endl;
+    posicion.imprimir();
+    presion.imprimir();
 }
