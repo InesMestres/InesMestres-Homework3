@@ -22,7 +22,7 @@ class MedicionBase:: public IMediciones{
     protected:
         std::unique_ptr<float> tiempoMedicion;
     public:
-        //MedicionBase();
+        MedicionBase();
         MedicionBase(float tiempo);
         float getTiempo() const;
         virtual void imprimir() const = 0;
@@ -44,7 +44,7 @@ class Presion: public MedicionBase{
 
 //Clase Posicion
 
-class Posicion{
+class Posicion:: public MedicionBase{
     protected:
         float latitud;
         float longitud;
