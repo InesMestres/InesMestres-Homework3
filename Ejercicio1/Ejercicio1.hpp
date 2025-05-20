@@ -22,9 +22,10 @@ class MedicionBase:: public IMediciones{
     protected:
         std::unique_ptr<float> tiempoMedicion;
     public:
+        //MedicionBase();
         MedicionBase(float tiempo);
         float getTiempo() const;
-        virtual void imprimir() = 0;
+        virtual void imprimir() const = 0;
 }
 
 //Class Presion
@@ -34,8 +35,9 @@ class Presion: public MedicionBase{
         float presionEstatica;
         float presionDinamica;
     public:
+        //Presion();
         Presion(float p, float q, float t);
-        void serializar(stream& out) override;
+        void serializar(stream& out) const override;
         void deserializar(stream& in) override;
         void imprimir() override;
 }
@@ -48,23 +50,24 @@ class Posicion{
         float longitud;
         float altitud;
     public:
-        Posicion(lat: float, lon: float, alt: float, t: float);
-        void serializar(stream& out) override;
+        //Posicion();
+        Posicion(float lat, float lon, float alt, float t);
+        void serializar(stream& out) const override;
         void deserializar(stream& in) override;
-        void imprimir() override;
+        void imprimir() const override;
 }
 
 //Clase SaveFlightData
 
 class saveFlightData: posicion, presion{
     private: 
-        unique_ptr<string> Posicion;
-        unique_ptr<string> Presión;
+        Posicion posicion;
+        Presión presion;
     public:
         SaveFlightData(const Posicion& p, const Presion& q);
-        void serializar(ofstream& out);
+        void serializar(ofstream& out) const override;
         void deserializar(ofstream& in);
-        void imprimir();
+        void imprimir() const override;
 }
 
 #endif
