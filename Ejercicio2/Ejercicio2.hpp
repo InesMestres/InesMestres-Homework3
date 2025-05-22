@@ -23,21 +23,21 @@ class Circulo{
     public:
         Circulo();
         Circulo(Punto posicionCirculo, int radioCirculo);
-        void set_radio();
+        void set_radio(int radioCirculo);
         Punto get_posicion() const;
         int get_radio() const;
 };
 
 class Elipse{
     protected:
-        Punto posicionCentro;
+        Punto posicion;
         int a; //semieje mayor
         int b; //semieje menor
     public:
         Elipse();
         Elipse(Punto posicionCentro, int a, int b);
-        void set_a();
-        void set_b();
+        void set_a(int semiejeMayor);
+        void set_b(int semiejeMenor);
         Punto get_posicionCentro() const;
         int get_a() const;
         int get_b() const;
@@ -45,12 +45,14 @@ class Elipse{
 
 class Rectangulo{
     protected:
-        Punto posicionVertice;
+        Punto posicion;
         int ancho;
         int largo;
     public:
         Rectangulo();
-        Rectangulo(Punto posicionVertice, int ancho, int largo);
+        Rectangulo(Punto posicionVertice, int ancho_r, int largo_r);
+        void set_ancho(int ancho_r);
+        void set_largo(int largo_r);
         Punto get_vertice();
         int get_ancho();
         int get_largo();
