@@ -77,7 +77,7 @@ void Posicion::imprimir() const{
 
 //FUNCIONES Clase SaveFlightData
 
-SaveFlightData::SaveFlightData(): posicion(make_unique<Posicion>(0)), presion(make_unique<Presion>(0)) {}
+SaveFlightData::SaveFlightData(): posicion(make_unique<Posicion>()), presion(make_unique<Presion>()) {}
    
 SaveFlightData::SaveFlightData(const Posicion& p, const Presion& q): posicion(make_unique<Posicion>(p)), presion(make_unique<Presion>(q)) {}
 
