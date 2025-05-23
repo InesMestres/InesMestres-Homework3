@@ -6,11 +6,18 @@ int main(){
     Elipse elipseOrigen;
     Rectangulo rectanguloOrigen;
 
-    circuloOrigen.calcularArea();
-    elipseOrigen.calcularArea();
-    rectanguloOrigen.calcularArea();
+    ProcesadorFigura<Circulo> procesadorCirculo;
+    double areaCirculo = procesadorCirculo.calcularArea(circuloOrigen);
 
-    Punto punto()
+    ProcesadorFigura<Elipse> procesadorElipse;
+    double areaElipse = procesadorElipse.calcularArea(elipseOrigen);
+
+    ProcesadorFigura<Rectangulo> procesadorRectangulo;
+    double areaRectangulo = procesadorRectangulo.calcularArea(rectanguloOrigen);
+
+
+    Punto punto;
+
 
     return 0;
 }

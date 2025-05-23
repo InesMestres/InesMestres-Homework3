@@ -102,14 +102,14 @@ int Rectangulo::get_largo(){
 
 //Funciones template:
 
-double ProcesadorFigura<Circulo>::calcularArea(){
-    return PI * (radio)^2;
+double ProcesadorFigura<Circulo>::calcularArea(const Circulo& circulo){
+    return PI * circulo.get_radio() * circulo.get_radio();
 }
 
-double ProcesadorFigura<Elipse>::calcularArea(){
+double ProcesadorFigura<Elipse>::calcularArea(const Elipse& elipse){
     return PI * a * b;
 }
 
-double ProcesadorFigura<Rectangulo>::calcularArea(){
-    return ancho*largo;
+double ProcesadorFigura<Rectangulo>::calcularArea(const Rectangulo& rectangulo){
+    return rectangulo.get_ancho() * rectangulo.get_largo();
 }
