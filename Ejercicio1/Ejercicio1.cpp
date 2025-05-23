@@ -77,18 +77,18 @@ void Posicion::imprimir() const{
    
 SaveFlightData::SaveFlightData(const Posicion& p, const Presion& q): posicion(p), presion(q) {}
 
-void saveFlightData::serializar(ofstream& out) const {
-    posicion.serializar(out);
-    presion.serializar(out);
+void SaveFlightData::serializar(ofstream& out) const {
+    Posicion.serializar(out);
+    Presion.serializar(out);
 }
 
-void saveFlightData::deserializar(ofstream& in){
-    posicion.deserializar(in);
-    presion.deserializar(in);
+void SaveFlightData::deserializar(ofstream& in){
+    Posicion.deserializar(in);
+    Presion.deserializar(in);
 }
 
-void saveFlightData::imprimir(){
+void SaveFlightData::imprimir(){
     cout << "Los datos del vuelo son:" << endl;
-    posicion.imprimir();
-    presion.imprimir();
+    Posicion.imprimir();
+    Presion.imprimir();
 }

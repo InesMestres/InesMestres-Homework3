@@ -59,7 +59,7 @@ class Posicion: public MedicionBase{
 
 //Clase SaveFlightData
 
-class saveFlightData{
+class SaveFlightData{
     private: 
         Posicion posicion;
         Presion presion;
