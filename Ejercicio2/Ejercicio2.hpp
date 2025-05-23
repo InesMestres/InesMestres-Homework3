@@ -83,4 +83,4 @@ class ProcesadorFigura<Rectangulo>{
         double calcularArea(const Rectangulo& rectangulo);
 };
 
-#endif PROCESADOR_FIGURA_HPP
+#endif

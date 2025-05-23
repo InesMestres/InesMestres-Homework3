@@ -2,9 +2,9 @@
 
 int main(){
 
-    Circulo circuloOrigen();
-    Elipse elipseOrigen();
-    Rectangulo rectanguloOrigen();
+    Circulo circuloOrigen;
+    Elipse elipseOrigen;
+    Rectangulo rectanguloOrigen;
 
     circuloOrigen.calcularArea();
     elipseOrigen.calcularArea();
