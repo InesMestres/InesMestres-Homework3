@@ -1,4 +1,7 @@
 #include "Ejercicio1.hpp"
+#include <fstream>
+#include <memory>
+using namespace std;
 
 
 //FUNCIONES CLASE ABSTRACTA MEDICIONBASE
@@ -26,18 +29,18 @@ Presion::Presion(float p, float q, float t): presionEstatica(p), presionDinamica
 void Presion::serializar(ofstream& out) const{
     out.write(reinterpret_cast<const char*>(&presionEstatica), sizeof(float));
     out.write(reinterpret_cast<const char*>(&presionDinamica), sizeof(float));
-    out.write(reinterpret_cast<const char*>(&tiempoMedicion.get()), sizeof(float));
+    out.write(reinterpret_cast<const char*>(tiempoMedicion.get()), sizeof(float));
 }
 
-void Presion::deserializar(ifstream& in) override{
-    in.read(reinterpret_cast<const char*>(&presionEstatica), sizeof(float));
-    in.read(reinterpret_cast<const char*>(&presionDinamica), sizeof(float));
+void Presion::deserializar(ifstream& in){
+    in.read(reinterpret_cast<char*>(&presionEstatica), sizeof(float));
+    in.read(reinterpret_cast<char*>(&presionDinamica), sizeof(float));
     float tiempo;
-    in.read(reinterpret_cast<const char*>(&tiempo), sizeof(float));
+    in.read(reinterpret_cast<char*>(&tiempo), sizeof(float));
     tiempoMedicion = make_unique<float>(tiempo);
 }
 
-void Presion::imprimir() const override{
+void Presion::imprimir() const{
     cout << "Presión Estática: " << presionEstatica << ", Presión Dinámica: " << presionDinamica << ", Tiempo de Medición: " << getTiempo() << endl;
 }
 
@@ -51,19 +54,19 @@ void Posicion::serializar(ofstream& out) const{
     out.write(reinterpret_cast<const char*>(&latitud), sizeof(float));
     out.write(reinterpret_cast<const char*>(&longitud), sizeof(float));
     out.write(reinterpret_cast<const char*>(&altitud), sizeof(float));
-    out.write(reinterpret_cast<const char*>(&tiempoMedicion.get()), sizeof(float));
+    out.write(reinterpret_cast<const char*>(tiempoMedicion.get()), sizeof(float));
 }
 
-void Posicion::deserializar(ifstream& in) override{
-    in.read(reinterpret_cast<const char*>(&latitud), sizeof(float));
-    in.read(reinterpret_cast<const char*>(&longitud), sizeof(float));
-    in.read(reinterpret_cast<const char*>(&altitud), sizeof(float));
+void Posicion::deserializar(ifstream& in){
+    in.read(reinterpret_cast<char*>(&latitud), sizeof(float));
+    in.read(reinterpret_cast<char*>(&longitud), sizeof(float));
+    in.read(reinterpret_cast<char*>(&altitud), sizeof(float));
     float tiempo;
-    in.read(reinterpret_cast<const char*>(&tiempo), sizeof(float));
+    in.read(reinterpret_cast<char*>(&tiempo), sizeof(float));
     tiempoMedicion = make_unique<float>(tiempo);
 }
 
-void Posicion::imprimir() const override{
+void Posicion::imprimir() const{
     cout << "Latitúd: " << latitud << ", Longitud: " << longitud << ", Altitud: " << altitud << ", Tiempo de Medición: " << getTiempo() << endl;
 }
 
@@ -72,7 +75,7 @@ void Posicion::imprimir() const override{
 
 //FUNCIONES Clase SaveFlightData
    
-SaveFlightData(const Posicion& p, const Presion& q): posicion(p), presion(q);
+SaveFlightData::SaveFlightData(const Posicion& p, const Presion& q): posicion(p), presion(q) {}
 
 void saveFlightData::serializar(ofstream& out) const {
     posicion.serializar(out);

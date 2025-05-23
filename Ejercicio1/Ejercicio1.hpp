@@ -10,23 +10,23 @@ using namespace std;
 
 class IMediciones{
     public:
-        virtual void serializar(of_stream& out) const = 0;
-        virtual void deserializar(of_stream& in) = 0;
+        virtual void serializar(std::ofstream& out) const = 0;
+        virtual void deserializar(std::ifstream& in) = 0;
         virtual ~IMediciones() = default;
-}
+};
 
 
 //Clase abstracta MedicionBase
 
-class MedicionBase:: public IMediciones{
+class MedicionBase: public IMediciones{
     protected:
-        std::unique_ptr<float> tiempoMedicion;
+        unique_ptr<float> tiempoMedicion;
     public:
         MedicionBase();
         MedicionBase(float tiempo);
         float getTiempo() const;
         virtual void imprimir() const = 0;
-}
+};
 
 //Class Presion
 
@@ -35,39 +35,39 @@ class Presion: public MedicionBase{
         float presionEstatica;
         float presionDinamica;
     public:
-        //Presion();
+        Presion();
         Presion(float p, float q, float t);
-        void serializar(stream& out) const override;
-        void deserializar(stream& in) override;
-        void imprimir() override;
-}
+        void serializar(ofstream& out) const override;
+        void deserializar(ifstream& in) override;
+        void imprimir() const override;
+};
 
 //Clase Posicion
 
-class Posicion:: public MedicionBase{
+class Posicion: public MedicionBase{
     protected:
         float latitud;
         float longitud;
         float altitud;
     public:
-        //Posicion();
+        Posicion();
         Posicion(float lat, float lon, float alt, float t);
-        void serializar(stream& out) const override;
-        void deserializar(stream& in) override;
+        void serializar(ofstream& out) const override;
+        void deserializar(ifstream& in) override;
         void imprimir() const override;
-}
+};
 
 //Clase SaveFlightData
 
-class saveFlightData: posicion, presion{
+class saveFlightData{
     private: 
         Posicion posicion;
-        Presión presion;
+        Presion presion;
     public:
         SaveFlightData(const Posicion& p, const Presion& q);
-        void serializar(ofstream& out) const override;
-        void deserializar(ofstream& in);
-        void imprimir() const override;
-}
+        void serializar(ofstream& out) const;
+        void deserializar(ifstream& in);
+        void imprimir() const;
+};
 
 #endif
