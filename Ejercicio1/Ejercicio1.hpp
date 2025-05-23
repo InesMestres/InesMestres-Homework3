@@ -24,8 +24,10 @@ class MedicionBase: public IMediciones{
     public:
         MedicionBase();
         MedicionBase(float tiempo);
+        MedicionBase(const MedicionBase& nuevo);
         float getTiempo() const;
         virtual void imprimir() const = 0;
+        virtual ~MedicionBase() = default;
 };
 
 //Class Presion
@@ -62,8 +64,9 @@ class Posicion: public MedicionBase{
 class SaveFlightData{
     private: 
         unique_ptr<Posicion> posicion;
-        unique_ptr<Posicion> presion;
+        unique_ptr<Presion> presion;
     public:
+        SaveFlightData();
         SaveFlightData(const Posicion& p, const Presion& q);
         void serializar(ofstream& out) const;
         void deserializar(ifstream& in);

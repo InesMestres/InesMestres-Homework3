@@ -10,6 +10,8 @@ MedicionBase::MedicionBase(): tiempoMedicion(std::make_unique<float>(0)){}
 
 MedicionBase::MedicionBase(float tiempo): tiempoMedicion(make_unique<float>(tiempo)){}
 
+MedicionBase::MedicionBase(const MedicionBase& nuevo): tiempoMedicion(std::make_unique<float>(*nuevo.tiempoMedicion)){}
+
 float MedicionBase::getTiempo() const{
     return *tiempoMedicion;
 }
@@ -74,21 +76,23 @@ void Posicion::imprimir() const{
 
 
 //FUNCIONES Clase SaveFlightData
+
+SaveFlightData::SaveFlightData(): posicion(make_unique<Posicion>(0)), presion(make_unique<Presion>(0)) {}
    
-SaveFlightData::SaveFlightData(const Posicion& p, const Presion& q): posicion(make_unique<Posicion>(p)), presion(make_unique<Posicion>(q)) {}
+SaveFlightData::SaveFlightData(const Posicion& p, const Presion& q): posicion(make_unique<Posicion>(p)), presion(make_unique<Presion>(q)) {}
 
 void SaveFlightData::serializar(ofstream& out) const {
     posicion -> serializar(out);
     presion -> serializar(out);
 }
 
-void SaveFlightData::deserializar(ofstream& in){
+void SaveFlightData::deserializar(ifstream& in){
     posicion -> deserializar(in);
     presion -> deserializar(in);
 }
 
-void SaveFlightData::imprimir(){
+void SaveFlightData::imprimir() const{
     cout << "Los datos del vuelo son:" << endl;
-    posicion.imprimir();
-    presion.imprimir();
+    posicion -> imprimir();
+    presion -> imprimir();
 }
