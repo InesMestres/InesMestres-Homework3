@@ -61,8 +61,8 @@ class Posicion: public MedicionBase{
 
 class SaveFlightData{
     private: 
-        Posicion posicion;
-        Presion presion;
+        unique_ptr<Posicion> posicion;
+        unique_ptr<Posicion> presion;
     public:
         SaveFlightData(const Posicion& p, const Presion& q);
         void serializar(ofstream& out) const;
