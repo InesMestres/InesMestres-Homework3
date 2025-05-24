@@ -62,7 +62,7 @@ void Clase2::asociar(const std::string& etiqueta, const std::string& valor){
     return;
 }
 
-string Clase2::construir(){
+void Clase2::construir(){
     ostringstream stringOutput;
     stringOutput << "{\n";
     int contador = 0;
@@ -70,7 +70,7 @@ string Clase2::construir(){
         stringOutput << "[" << etiqueta << "] : " << valor << "\n";  
     }
     stringOutput << "}";
-    return stringOutput.str();
+    return;
 }
 
 void Clase2::imprimir(){
