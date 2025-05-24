@@ -22,30 +22,34 @@ void Clase1<T>::agregar(const T& valor){
 
 template<typename T>
 std::string Clase1<T>::procesar(){
-    string ostringstream stringOutput;
+    ostringstream stringOutput;
 
     if constexpr(is_same<T, string>:: value){
+        stringOutput << "[";
         for(int i = 0; i < Vector.size(); i++){
             stringOutput << vector[i];
         }
+        stringOutput << "]";
     }
 
-     if constexpr(is_same<T, double>:: value){
+    if constexpr(is_same<T, double>:: value){
+        stringOutput << "[";
         for(int i = 0; i < Vector.size(), i++){
             stringOutput << vector[i];
         }
-     }
+        stringOutput << vector[i];
+    }
 
     if constexpr(is_same<T, vector<int>>:: value){
         for(int i = 0; i < Vector.size(), i++){
-            stringOutput += "[";
+            stringOutput << "[";
             for(int j = 0; j < Vector[i].size(), j++){
                 stringOutput << vector[i][j];
             }
-            stringOutput << "]";
+        stringOutput << "]";
         }
-        return stringOutput;
     }
+    return stringOutput;
 }
 
 
@@ -58,10 +62,11 @@ void Clase2::asociar(const std::string& etiqueta, const std::string& valor){
 }
 
 string Clase2::construir(){
-    ostringstream stringOutput = "{\n";
+    ostringstream stringOutput;
+    stringOutput << "{\n";
     int contador = 0;
     for(const auto& [etiqueta, valor]: etiquetaValor){
-        stringOutput << "[" << clave << "] : " << valor << "\n";  
+        stringOutput << "[" << etiqueta << "] : " << valor << "\n";  
     }
     stringOutput << "}";
     return stringOutput.str();
