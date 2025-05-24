@@ -54,8 +54,8 @@ class Rectangulo{
         void set_ancho(int ancho_r);
         void set_largo(int largo_r);
         Punto get_vertice();
-        int get_ancho();
-        int get_largo();
+        int get_ancho() const;
+        int get_largo() const;
 };
 
 

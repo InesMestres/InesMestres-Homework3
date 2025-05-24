@@ -1,5 +1,5 @@
 #include "Ejercicio2.hpp"
-#define PI = 3.14159265
+#define PI 3.14159265
 
 
 //Funciones Punto:
@@ -92,11 +92,11 @@ Punto Rectangulo::get_vertice(){
     return posicion;
 }
 
-int Rectangulo::get_ancho(){
+int Rectangulo::get_ancho() const{
     return ancho;
 }
 
-int Rectangulo::get_largo(){
+int Rectangulo::get_largo() const{
     return largo;
 }
 
@@ -107,7 +107,7 @@ double ProcesadorFigura<Circulo>::calcularArea(const Circulo& circulo){
 }
 
 double ProcesadorFigura<Elipse>::calcularArea(const Elipse& elipse){
-    return PI * a * b;
+    return PI * elipse.get_a() * elipse.get_b();
 }
 
 double ProcesadorFigura<Rectangulo>::calcularArea(const Rectangulo& rectangulo){
