@@ -28,7 +28,7 @@ class Clase2{
         std::map<std::string, std::string> etiquetaValor;
     public:
         void asociar(const std::string& etiqueta, const std::string& valor);
-        void construir();
+        string construir();
         void imprimir();
 };
 
