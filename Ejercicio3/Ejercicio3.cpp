@@ -10,10 +10,10 @@ using namespace std;
 //Funciones Clase 1
 
 template<typename T>
-Clase1<T>::Clase1(): vector(){}
+Clase1<T>::Clase1(): vectorExistente(){}
 
 template<typename T>
-Clase1<T>::Clase1(const vector<T>& vectorExistente): vector(vectorExistente){}
+Clase1<T>::Clase1(const vector<T>& vectorCreado): vectorExistente(vectorCreado){}
 
 template<typename T>
 void Clase1<T>::agregar(const T& valor){

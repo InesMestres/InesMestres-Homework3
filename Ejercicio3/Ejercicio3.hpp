@@ -15,7 +15,7 @@ class Clase1{
         std::vector<T> vectorExistente;
     public:
         Clase1();
-        Clase1(const vector& vectorExistente);
+        Clase1(const std::vector<T>& vectorCreado);
         void agregar(const T& valor);
         std::string procesar();
 };
