@@ -12,7 +12,7 @@ template<typename T>
 Clase1<T>::Clase1(): vector(){}
 
 template<typename T>
-Clase1<T>::Clase1(const vector<T> vectorExistente): vector(vectorExistente){}
+Clase1<T>::Clase1(const vector<T>& vectorExistente): vector(vectorExistente){}
 
 template<typename T>
 void Clase1<T>::agregar(const T& valor){
@@ -27,7 +27,7 @@ std::string Clase1<T>::procesar(){
     if constexpr(is_same<T, string>:: value){
         stringOutput << "[";
         for(int i = 0; i < Vector.size(); i++){
-            stringOutput << vector[i];
+            stringOutput << Vector[i];
         }
         stringOutput << "]";
     }
@@ -35,21 +35,21 @@ std::string Clase1<T>::procesar(){
     if constexpr(is_same<T, double>:: value){
         stringOutput << "[";
         for(int i = 0; i < Vector.size(), i++){
-            stringOutput << vector[i];
+            stringOutput << Vector[i];
         }
-        stringOutput << vector[i];
+        stringOutput << "]";
     }
 
-    if constexpr(is_same<T, vector<int>>:: value){
+    if constexpr(is_same<T, Vector<int>>:: value){
         for(int i = 0; i < Vector.size(), i++){
             stringOutput << "[";
             for(int j = 0; j < Vector[i].size(), j++){
-                stringOutput << vector[i][j];
+                stringOutput << Vector[i][j];
             }
         stringOutput << "]";
         }
     }
-    return stringOutput;
+    return stringOutput.str();
 }
 
 
@@ -57,7 +57,7 @@ std::string Clase1<T>::procesar(){
 //Funciones Clase 2
 
 void Clase2::asociar(const std::string& etiqueta, const std::string& valor){
-    etiquetaValor[etiqueta]=valor;
+    etiquetaValor[etiqueta]= valor;
     return;
 }
 
