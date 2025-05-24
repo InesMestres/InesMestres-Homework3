@@ -1,6 +1,7 @@
 #ifndef CLASES1Y2_HPP
 #define CLASES1Y2_HPP
 
+#include <iostream>
 #include <vector>
 #include <type_traits>
 #include <string>
@@ -11,7 +12,7 @@
 template <class T>
 class Clase1{
     private:
-        std::vector<T> Vector;
+        std::vector<T> vectorExistente;
     public:
         Clase1();
         Clase1(const vector& vectorExistente);
@@ -29,6 +30,6 @@ class Clase2{
         void asociar(const std::string& etiqueta, const std::string& valor);
         void construir();
         void imprimir();
-}
+};
 
 #endif
