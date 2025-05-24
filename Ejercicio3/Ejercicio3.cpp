@@ -42,9 +42,9 @@ std::string Clase1<T>::procesar(){
     }
 
     if constexpr(is_same<T, vector<int>> ::value){
-        for(int i = 0; i < vectorExistente.size(), i++){
+        for(int i = 0; i < vectorExistente.size(); i++){
             stringOutput << "[";
-            for(int j = 0; j < vectorExistente[i].size(), j++){
+            for(int j = 0; j < vectorExistente[i].size(); j++){
                 stringOutput << vectorExistente[i][j];
             }
         stringOutput << "]";
