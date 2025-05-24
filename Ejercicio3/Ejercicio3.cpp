@@ -1,6 +1,7 @@
 #include "Ejercicio3.hpp"
 using namespace std;
 
+#include <sstream>
 #include <vector>
 #include <type_traits>
 #include <string>
