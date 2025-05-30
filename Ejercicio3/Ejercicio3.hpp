@@ -2,6 +2,7 @@
 #define CLASES1Y2_HPP
 
 #include <iostream>
+#include <sstream>
 #include <vector>
 #include <type_traits>
 #include <string>
