@@ -1,4 +1,7 @@
 #include "Ejercicio1.hpp"
+#include <iostream>
+#include <fstream>
+using namespace std;
 
 int main(){
 
@@ -9,25 +12,26 @@ int main(){
     ofstream out("Data.bin", ios::binary);
     if (out.is_open()){
         DataVuelo.serializar(out);
+        out.close();
     }
     else{
         cout << "Error al abrir archivo para serializar." << endl;
-        return 0;
+        return 1;
     }
 
-    out.close();
-
+    SaveFlightData DataVueloLeida;
     ifstream in("Data.bin", ios::binary);
     if (in.is_open()){
         DataVuelo.deserializar(in);
+        in.close();
     }
     else{
         cout << "Error al abrir archivo para deserializar." << endl;
-        return 0;
+        return 1;
     }
 
-    in.close();
-    
-    DataVuelo.imprimir();
+    cout << "Datos del vuelo deserializados: " << endl;
+    DataVueloLeida.imprimir();
+    return 0;
 
 }
