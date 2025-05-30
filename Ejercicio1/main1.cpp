@@ -22,7 +22,7 @@ int main(){
     SaveFlightData DataVueloLeida;
     ifstream in("Data.bin", ios::binary);
     if (in.is_open()){
-        DataVuelo.deserializar(in);
+        DataVueloLeida.deserializar(in);
         in.close();
     }
     else{
