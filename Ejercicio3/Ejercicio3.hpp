@@ -21,7 +21,52 @@ class Clase1{
 };
 
 
+template<typename T>
+Clase1<T>::Clase1(): vectorExistente(){}
+
+template<typename T>
+Clase1<T>::Clase1(const vector<T>& vectorCreado): vectorExistente(vectorCreado){}
+
+template<typename T>
+void Clase1<T>::agregar(const T& valor){
+    vectorExistente.push_back(valor);
+    return;
+}
+
+template<typename T>
+std::string Clase1<T>::procesar(){
+    ostringstream stringOutput;
+
+    if constexpr(is_same<T, string>:: value){
+        stringOutput << "[";
+        for(int i = 0; i < vectorExistente.size(); i++){
+            stringOutput << vectorExistente[i];
+        }
+        stringOutput << "]";
+    }
+
+    if constexpr(is_same<T, double>:: value){
+        stringOutput << "[";
+        for(int i = 0; i < vectorExistente.size(); i++){
+            stringOutput << vectorExistente[i];
+        }
+        stringOutput << "]";
+    }
+
+    if constexpr(is_same<T, vector<int>> ::value){
+        for(int i = 0; i < vectorExistente.size(); i++){
+            stringOutput << "[";
+            for(int j = 0; j < vectorExistente[i].size(); j++){
+                stringOutput << vectorExistente[i][j];
+            }
+        stringOutput << "]";
+        }
+    }
+    return stringOutput.str();
+};
+
 //Clase 2
+
 
 class Clase2{
     private:
