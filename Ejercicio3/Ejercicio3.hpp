@@ -25,7 +25,7 @@ template<typename T>
 Clase1<T>::Clase1(): vectorExistente(){}
 
 template<typename T>
-Clase1<T>::Clase1(const vector<T>& vectorCreado): vectorExistente(vectorCreado){}
+Clase1<T>::Clase1(const std::vector<T>& vectorCreado): vectorExistente(vectorCreado){}
 
 template<typename T>
 void Clase1<T>::agregar(const T& valor){
@@ -35,9 +35,9 @@ void Clase1<T>::agregar(const T& valor){
 
 template<typename T>
 std::string Clase1<T>::procesar(){
-    ostringstream stringOutput;
+    std::ostringstream stringOutput;
 
-    if constexpr(is_same<T, string>:: value){
+    if constexpr(std::is_same<T, string>:: value){
         stringOutput << "[";
         for(int i = 0; i < vectorExistente.size(); i++){
             stringOutput << vectorExistente[i];
@@ -45,7 +45,7 @@ std::string Clase1<T>::procesar(){
         stringOutput << "]";
     }
 
-    if constexpr(is_same<T, double>:: value){
+    if constexpr(std::is_same<T, double>:: value){
         stringOutput << "[";
         for(int i = 0; i < vectorExistente.size(); i++){
             stringOutput << vectorExistente[i];
@@ -53,7 +53,7 @@ std::string Clase1<T>::procesar(){
         stringOutput << "]";
     }
 
-    if constexpr(is_same<T, vector<int>> ::value){
+    if constexpr(is_same<T, std::vector<int>> ::value){
         for(int i = 0; i < vectorExistente.size(); i++){
             stringOutput << "[";
             for(int j = 0; j < vectorExistente[i].size(); j++){
