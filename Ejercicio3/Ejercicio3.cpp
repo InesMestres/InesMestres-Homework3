@@ -18,8 +18,14 @@ string Clase2::construir(){
     ostringstream stringOutput;
     stringOutput << "{\n";
     int contador = 0;
+    int total = etiquetaValor.size();
     for(const auto& [etiqueta, valor]: etiquetaValor){
-        stringOutput << "[" << etiqueta << "] : " << valor << "\n";  
+        stringOutput << "  \"" << etiqueta << "  \"  : " << valor;  
+        if(contador < total - 1){
+            stringOutput << ",";
+        }
+        stringOutput << "\n";
+        contador++;
     }
     stringOutput << "}";
     return stringOutput.str();
