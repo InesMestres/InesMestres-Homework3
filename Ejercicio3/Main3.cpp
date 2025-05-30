@@ -28,5 +28,9 @@ int main(){
     constructorJSON.asociar("Vector Dobles", vectorDobles);
     constructorJSON.asociar("Vector String", vectorString);
     constructorJSON.asociar("Matriz", vectorVector);
+    
+    constructorJSON.imprimir();
+    
+
 
 }
