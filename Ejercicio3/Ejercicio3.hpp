@@ -38,7 +38,7 @@ template<typename T>
 std::string Clase1<T>::procesar(){
     std::ostringstream stringOutput;
 
-    if constexpr(std::is_same<T, string>:: value){
+    if constexpr(std::is_same<T, std::string>:: value){
         stringOutput << "[";
         for(int i = 0; i < vectorExistente.size(); i++){
             stringOutput << vectorExistente[i];
