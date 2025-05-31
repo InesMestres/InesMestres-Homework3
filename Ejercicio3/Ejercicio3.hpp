@@ -41,8 +41,8 @@ std::string Clase1<T>::procesar(){
     if constexpr(std::is_same<T, std::string>::value){
         stringOutput << "[";
         for(int i = 0; i < vectorExistente.size(); i++){
-            if (i > 0) stringOutput << ",";
-            stringOutput << "\"" << vectorExistente[i];
+            if (i > 0) stringOutput << ", ";
+            stringOutput << "\"" << vectorExistente[i] << "\"";
         }
         stringOutput << "]";
     }
