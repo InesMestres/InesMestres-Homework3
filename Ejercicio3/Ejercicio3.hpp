@@ -38,11 +38,11 @@ template<typename T>
 std::string Clase1<T>::procesar(){
     std::ostringstream stringOutput;
 
-    if constexpr(std::is_same<T, std::string>:: value){
+    if constexpr(std::is_same<T, std::string>::value){
         stringOutput << "[";
         for(int i = 0; i < vectorExistente.size(); i++){
-            if (i > 0) {stringOutput << ",";
-            stringOutput << "\"" << vectorExistente[i] << "\"";}
+            if (i > 0) {stringOutput << ",";}
+            stringOutput << "\"" << vectorExistente[i];
         }
         stringOutput << "]";
     }
@@ -57,18 +57,20 @@ std::string Clase1<T>::procesar(){
     }
 
     if constexpr(std::is_same<T, std::vector<int>> ::value){
-        stringOutput << "[";
+        stringOutput << "[\n";
         for(int i = 0; i < vectorExistente.size(); i++){
-            if(i > 0){stringOutput << "["; }
             stringOutput << "[";
             for(int j = 0; j < vectorExistente[i].size(); j++){
                 if(j > 0){stringOutput << ", ";}
                 stringOutput << vectorExistente[i][j];
             }
-        stringOutput << "]";
+            stringOutput << "]";
+            if(i < vectorExistente.size() - 1){ stringOutput << ","; }
+            stringOutput << "\n";
         }
-    stringOutput << "]";
+        stringOutput << "]";
     }
+    
     return stringOutput.str();
 };
 
