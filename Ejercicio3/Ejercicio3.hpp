@@ -42,7 +42,7 @@ std::string Clase1<T>::procesar(){
         stringOutput << "[";
         for(int i = 0; i < vectorExistente.size(); i++){
             if (i > 0) {stringOutput << ",";
-            stringOutput << vectorExistente[i];}
+            stringOutput << "\"" << vectorExistente[i] << "\"";}
         }
         stringOutput << "]";
     }
@@ -51,7 +51,7 @@ std::string Clase1<T>::procesar(){
         stringOutput << "[";
         for(int i = 0; i < vectorExistente.size(); i++){
             if(i > 0){stringOutput << ", ";}
-            stringOutput << vectorExistente[i];
+            stringOutput << vectorExistente[i] << "\"";
         }
         stringOutput << "]";
     }
@@ -69,7 +69,6 @@ std::string Clase1<T>::procesar(){
         }
     stringOutput << "]";
     }
-    
     return stringOutput.str();
 };
 

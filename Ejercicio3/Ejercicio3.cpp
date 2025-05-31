@@ -20,7 +20,7 @@ string Clase2::construir(){
     int contador = 0;
     int total = etiquetaValor.size();
     for(const auto& [etiqueta, valor]: etiquetaValor){
-        stringOutput << "  \"" << etiqueta << "  \"  : " << valor;  
+        stringOutput << "\"" << etiqueta << "\"  : " << valor;  
         if(contador < total - 1){
             stringOutput << ",";
         }
