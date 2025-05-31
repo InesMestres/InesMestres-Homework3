@@ -59,6 +59,7 @@ class Rectangulo{
 };
 
 
+
 template <class T>
 class ProcesadorFigura{
     public:
