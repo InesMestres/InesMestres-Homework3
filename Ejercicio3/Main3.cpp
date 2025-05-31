@@ -25,12 +25,12 @@ int main(){
     string vectorVector = claseVector.procesar();
 
     Clase2 constructorJSON;
-    constructorJSON.asociar("Vector Dobles", vectorDobles);
-    constructorJSON.asociar("Vector String", vectorString);
-    constructorJSON.asociar("Matriz", vectorVector);
+    constructorJSON.asociar("vec_doubles", vectorDobles);
+    constructorJSON.asociar("palabras", vectorString);
+    constructorJSON.asociar("listas", vectorVector);
     
     constructorJSON.imprimir();
-    
 
+    return 0;
 
 }

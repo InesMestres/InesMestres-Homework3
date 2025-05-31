@@ -40,27 +40,27 @@ std::string Clase1<T>::procesar(){
 
     if constexpr(std::is_same<T, std::string>::value){
         stringOutput << "[";
-        for(int i = 0; i < vectorExistente.size(); i++){
+        for(size_t i = 0; i < vectorExistente.size(); i++){
             if (i > 0) stringOutput << ", ";
             stringOutput << "\"" << vectorExistente[i] << "\"";
         }
         stringOutput << "]";
     }
 
-    if constexpr(std::is_same<T, double>:: value){
+    else if constexpr(std::is_same<T, double>:: value){
         stringOutput << "[";
-        for(int i = 0; i < vectorExistente.size(); i++){
+        for(size_t i = 0; i < vectorExistente.size(); i++){
             if(i > 0) stringOutput << ", ";
             stringOutput << vectorExistente[i];
         }
         stringOutput << "]";
     }
 
-    if constexpr(std::is_same<T, std::vector<int>> ::value){
+    else if constexpr(std::is_same<T, std::vector<int>> ::value){
         stringOutput << "[\n";
-        for(int i = 0; i < vectorExistente.size(); i++){
-            stringOutput << "[";
-            for(int j = 0; j < vectorExistente[i].size(); j++){
+        for(size_t i = 0; i < vectorExistente.size(); i++){
+            stringOutput << "  [";
+            for(size_t j = 0; j < vectorExistente[i].size(); j++){
                 if(j > 0) stringOutput << ", ";
                 stringOutput << vectorExistente[i][j];
             }
