@@ -20,8 +20,8 @@ int main(){
     string vectorString = claseString.procesar();
 
     Clase1<vector<int>> claseVector;
-    claseString.agregar({1, 2});
-    claseString.agregar({3, 4});
+    claseVector.agregar({1, 2});
+    claseVector.agregar({3, 4});
     string vectorVector = claseVector.procesar();
 
     Clase2 constructorJSON;
