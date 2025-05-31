@@ -74,8 +74,9 @@ std::string Clase1<T>::procesar(){
     return stringOutput.str();
 };
 
-//Clase 2
 
+
+//Clase 2
 
 class Clase2{
     private:

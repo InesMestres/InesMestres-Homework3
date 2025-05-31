@@ -46,6 +46,9 @@ void Presion::imprimir() const{
     cout << "Presión Estática: " << presionEstatica << ", Presión Dinámica: " << presionDinamica << ", Tiempo de Medición: " << getTiempo() << endl;
 }
 
+
+
+
 //FUNCIONES POSICION
 
 Posicion::Posicion(): latitud(0), longitud(0), altitud(0), MedicionBase(0){}
